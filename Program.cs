@@ -10,9 +10,18 @@ namespace _20241205CS002
     {
         static void Main(string[] args)
         {
+
+            //用遞迴Recursive (也就是讓: 函式自己呼叫自己)
+            // ex 算階層, 5!=5*4*3*2*1, 10!=10*9*8*7*....*1
+            double result = CountLevel(10);
+            if (result > 0)
+                Console.WriteLine(result);
+            else
+                Console.WriteLine("計算錯誤或Ram不夠大!");
+
             //假設要輸入10位學生的數學成績,同時算平均.
             //不用陣列做法
-            test1();
+         
 
             //做法2: 使用陣列
 
@@ -66,5 +75,15 @@ namespace _20241205CS002
         }
        static void test3() { }
 
+       static int CountLevel(int n)
+        {
+            if (n < 0)
+                return -1;
+
+            if (n == 1)
+                return 1;
+            else
+                return n * CountLevel(n - 1);
+        }
     }
 }
