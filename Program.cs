@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +12,36 @@ namespace _20241205CS002
     {
         static void Main(string[] args)
         {
-
-            //用遞迴Recursive (也就是讓: 函式自己呼叫自己)
-            // ex 算階層, 5!=5*4*3*2*1, 10!=10*9*8*7*....*1
-            double result = CountLevel(10);
-            if (result > 0)
-                Console.WriteLine(result);
-            else
-                Console.WriteLine("計算錯誤或Ram不夠大!");
-
-            //假設要輸入10位學生的數學成績,同時算平均.
-            //不用陣列做法
-         
-
-            
+            //計算學生10位的平均成績
             //做法3: 使用串列
+            List<double> EngSccore = new List<double>();
+            List<string> StdName=new List<string>();
 
+            Console.WriteLine("請輸入10位同學成績:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("第"+(i+1)+"位");
+                try
+                {
+                    EngSccore.Add(double.Parse(Console.ReadLine()));
+                }
+                catch (Exception ex) {
+                    Console.WriteLine("輸入錯誤!"+ex.Message); }
+
+            }
+
+            double sum = 0;
+            foreach (var EachScore in EngSccore)
+            {
+                sum = sum + EachScore;
+
+            }
+
+            Console.Write("平均成績為:" + (sum / 10).ToString());
 
         }
 
-       static void HowToSetArray()
+        static void HowToSetArray()
         {
             //甲:陣列配記憶體空間方式
             float[] MathScore = new float[100];
@@ -41,7 +52,7 @@ namespace _20241205CS002
             // 知道陣列的初始值,而且陣列內的資料數量不大時,可以用.
             float[] MathScore2 = { 0, 0, 0, 0, 0, 0, 0, 0 };
         }
-       static void test1()
+        static void test1()
         {
             //做法1: 不使用陣列情況
             //存分數的變數
@@ -67,7 +78,7 @@ namespace _20241205CS002
             Console.WriteLine("你輸入的總分為:" + sum.ToString());
             Console.WriteLine("平均分數為:" + (sum / 10).ToString());
         }
-       static void DemoForTryCath()
+        static void DemoForTryCath()
         {
             int a = 5; float m = 0;
             int[] z = { 1, 2, 3, 4, 5 };
@@ -84,7 +95,7 @@ namespace _20241205CS002
             }
 
         }
-     static void test2()
+        static void test2()
         {
             //做法2: 使用陣列
             float[] MathScore = new float[10];
@@ -115,10 +126,33 @@ namespace _20241205CS002
                 Console.WriteLine("第" + i.ToString() + "位學生成績:" + MathScore[i].ToString());
             }
         }
-       static void test3() { }
+        static void test3() {
+            /* 串列用法 介紹 */
+            List<double> scores = new List<double>();
+            scores.Add(10.21);
+            scores.Add(11.23);
+            scores.Add(56.33);
+            scores.Remove(11.23);
+            foreach (var StudentScore in scores)
+            {
+                Console.WriteLine(StudentScore);
+            }
 
-       static int CountLevel(int n)
+        }
+
+        static int CountLevel(int n)
         {
+            //用遞迴Recursive (也就是讓: 函式自己呼叫自己)
+            // ex 算階層, 5!=5*4*3*2*1, 10!=10*9*8*7*....*1
+
+            /*主程式main叫用內容
+             double result = CountLevel(10);
+             if (result > 0)
+                Console.WriteLine(result);
+            else
+                Console.WriteLine("計算錯誤或Ram不夠大!");
+            */
+
             if (n < 0)
                 return -1;
 
