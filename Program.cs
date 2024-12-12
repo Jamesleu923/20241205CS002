@@ -5,28 +5,68 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using System.Collections;
 namespace _20241205CS002
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            List<double> EngScore = new List<double> { 99, 20, 50, 60, 100, 80 };
+            //先排序
+            EngScore.Sort();
+
+            foreach (var eachscore in EngScore)
+                Console.WriteLine(eachscore);
+
+            
+            Console.WriteLine("總分數為:"+ EngScore.Sum().ToString());
+            Console.WriteLine("總共有"+EngScore.Count().ToString()+"組資料");
+            Console.WriteLine("平均分數為:"+(EngScore.Sum()/EngScore.Count()).ToString());
+
+
+        }
+
+        static void MyStackDemo()
+        {
+            Stack<int> MyNumbers = new Stack<int>();
+            MyNumbers.Push(40);
+            MyNumbers.Push(100);
+            MyNumbers.Push(80);
+            MyNumbers.Push(54);
+
+            foreach (var number in MyNumbers)
+            {
+
+                Console.WriteLine(number);
+            }
+
+
+            Console.WriteLine(MyNumbers.Pop());
+
+        }
+        static void CountGradeByList()
+        {
             //計算學生10位的平均成績
             //做法3: 使用串列
             List<double> EngSccore = new List<double>();
-            List<string> StdName=new List<string>();
+            List<string> StdName = new List<string>();
+
+
+
 
             Console.WriteLine("請輸入10位同學成績:");
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine("第"+(i+1)+"位");
+                Console.WriteLine("第" + (i + 1) + "位");
                 try
                 {
                     EngSccore.Add(double.Parse(Console.ReadLine()));
                 }
-                catch (Exception ex) {
-                    Console.WriteLine("輸入錯誤!"+ex.Message); }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("輸入錯誤!" + ex.Message);
+                }
 
             }
 
@@ -38,7 +78,6 @@ namespace _20241205CS002
             }
 
             Console.Write("平均成績為:" + (sum / 10).ToString());
-
         }
 
         static void HowToSetArray()
